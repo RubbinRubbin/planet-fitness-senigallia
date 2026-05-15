@@ -2,10 +2,11 @@
 (function () {
   'use strict';
 
-  var nav     = document.getElementById('nav');
-  var burger  = document.getElementById('burger');
-  var links   = document.getElementById('navLinks');
-  var toTop   = document.getElementById('toTop');
+  var nav      = document.getElementById('nav');
+  var burger   = document.getElementById('burger');
+  var links    = document.getElementById('navLinks');
+  var backdrop = document.getElementById('navBackdrop');
+  var toTop    = document.getElementById('toTop');
   var reduce  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---- year ---- */
@@ -22,18 +23,18 @@
   onScroll();
 
   /* ---- mobile menu ---- */
-  function closeMenu() {
-    burger.classList.remove('open');
-    links.classList.remove('open');
-    document.body.classList.remove('menu-open');
-    burger.setAttribute('aria-expanded', 'false');
-  }
-  burger.addEventListener('click', function () {
-    var open = burger.classList.toggle('open');
+  function setMenu(open) {
+    burger.classList.toggle('open', open);
     links.classList.toggle('open', open);
+    backdrop.classList.toggle('show', open);
     document.body.classList.toggle('menu-open', open);
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function closeMenu() { setMenu(false); }
+  burger.addEventListener('click', function () {
+    setMenu(!burger.classList.contains('open'));
   });
+  backdrop.addEventListener('click', closeMenu);
   links.addEventListener('click', function (e) {
     if (e.target.tagName === 'A') closeMenu();
   });
