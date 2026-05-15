@@ -25,11 +25,13 @@
   function closeMenu() {
     burger.classList.remove('open');
     links.classList.remove('open');
+    document.body.classList.remove('menu-open');
     burger.setAttribute('aria-expanded', 'false');
   }
   burger.addEventListener('click', function () {
     var open = burger.classList.toggle('open');
     links.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
   links.addEventListener('click', function (e) {

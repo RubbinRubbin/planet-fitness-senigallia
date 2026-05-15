@@ -22,7 +22,7 @@
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:92px}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
@@ -37,7 +37,11 @@ body{
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
+  -webkit-tap-highlight-color:transparent;
 }
+body.menu-open{overflow:hidden}
+
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:3px}
 
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
@@ -143,6 +147,7 @@ h2 .o,.o{color:var(--orange)}
 .hero{
   min-height:100svh;display:flex;flex-direction:column;justify-content:center;
   padding:8rem clamp(1rem,4vw,2.6rem) 5rem;position:relative;z-index:2;
+  overflow:hidden;
 }
 .hero-bigword{
   position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);
@@ -410,14 +415,30 @@ h2 .o,.o{color:var(--orange)}
   .wrap,.hero-inner,.mondi-grid,.disc-grid,.map-wrap{width:90vw}
   .stats{grid-template-columns:1fr 1fr}
   .disc-grid,.serv-grid,.danza-grid{grid-template-columns:1fr}
-  .lab-split{grid-template-columns:1fr;gap:1.8rem}
-  .hero{padding-top:7rem}
+  .lab-split{grid-template-columns:1fr;gap:1.6rem}
+  .hero{padding-top:6.5rem;min-height:92svh}
   .hero h1{margin:.6rem 0 1rem}
-  .marquee-track span{font-size:1.15rem}
+  .hero-lede{font-size:1rem}
+  .marquee{padding:.9rem 0}
+  .marquee-track{gap:1.6rem;animation-duration:26s}
+  .marquee-track span{font-size:1.05rem}
   .btn{width:100%;justify-content:center}
   .hero-cta,.cta-btns{width:100%}
-  .mondo,.dzf-card,.serv{padding:1.9rem 1.6rem}
-  .stat{padding:1.7rem 1rem}
+  .mondo,.dzf-card,.serv{padding:1.8rem 1.5rem}
+  .stat{padding:1.6rem .9rem}
+  /* compact discipline list: number inline, no tall cards */
+  .disc{
+    min-height:auto;padding:1.35rem 1.4rem;flex-direction:row;
+    align-items:baseline;gap:.95rem;flex-wrap:wrap;
+  }
+  .disc-n{margin-bottom:0;flex:none}
+  .disc h3{margin:0;font-size:1.1rem;flex:1 1 auto}
+  .disc p{flex:1 0 100%;margin-top:.15rem;font-size:.86rem}
+  /* lighter atmosphere = smoother scroll on phones */
+  .bg-orbits .glow{filter:blur(60px);opacity:.32}
+  .orbit.o3{display:none}
+  .hero-bigword{font-size:42vw}
+  html{scroll-padding-top:72px}
 }
 
 @media (max-width:380px){
