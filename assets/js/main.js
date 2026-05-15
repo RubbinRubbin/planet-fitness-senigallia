@@ -83,4 +83,23 @@
   } else {
     nums.forEach(runCount);
   }
+
+  /* ---- orari corsi: tabs Palestra / Danza ---- */
+  var otBtns   = document.querySelectorAll('.ot-btn');
+  var otPanels = document.querySelectorAll('.ot-panel');
+  otBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tab = btn.getAttribute('data-tab');
+      otBtns.forEach(function (b) {
+        var on = b === btn;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      otPanels.forEach(function (p) {
+        var on = p.getAttribute('data-panel') === tab;
+        p.classList.toggle('is-active', on);
+        if (on) { p.removeAttribute('hidden'); } else { p.setAttribute('hidden', ''); }
+      });
+    });
+  });
 })();
