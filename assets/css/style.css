@@ -384,6 +384,8 @@ h2 .o,.o{color:var(--orange)}
 }
 .to-top.show{opacity:1;transform:none;pointer-events:auto}
 .to-top:hover{background:var(--orange-hot)}
+/* niente bottone torna-su su mobile */
+@media (max-width:860px){ .to-top{display:none} }
 
 /* ---------- reveal ---------- */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
