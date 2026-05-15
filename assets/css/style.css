@@ -288,7 +288,8 @@ h2 .o,.o{color:var(--orange)}
 .danza-head{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;margin-bottom:3.4rem}
 .danza-intro{color:#cdc8bf;font-size:clamp(1rem,1.4vw,1.12rem);line-height:1.75}
 .danza-intro em{color:var(--orange);font-style:italic}
-.danza-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-bottom:1.3rem}
+.danza-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.3rem;margin-bottom:1.3rem}
+.danza-grid>*{flex:1 1 250px;max-width:calc(25% - .99rem)}
 .dz{border:1px solid var(--line);border-radius:var(--rad);padding:2rem 1.8rem;transition:border-color .4s,transform .4s,background .4s}
 .dz h3{font-size:1.35rem;text-transform:uppercase;margin-bottom:.6rem}
 .dz p{color:var(--muted);font-size:.92rem}
@@ -316,7 +317,8 @@ h2 .o,.o{color:var(--orange)}
 /* ---------- TEAM / INSEGNANTI ---------- */
 .team{padding:clamp(4rem,9vw,7rem) 0 clamp(5rem,11vw,9rem);z-index:2;border-top:1px solid var(--line);background:var(--bg-2)}
 .team h2{margin-bottom:3rem}
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem}
+.team-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.3rem}
+.team-grid>*{flex:1 1 250px;max-width:calc(25% - .99rem)}
 .member{
   padding:2.2rem 1.9rem;border:1px solid var(--line);border-radius:var(--rad);
   background:var(--bg);transition:transform .4s,border-color .4s,background .4s;
@@ -404,8 +406,11 @@ h2 .o,.o{color:var(--orange)}
   .stats{grid-template-columns:repeat(2,1fr)}
   .disc-grid{grid-template-columns:repeat(2,1fr)}
   .serv-grid{grid-template-columns:repeat(2,1fr)}
-  .team-grid{grid-template-columns:repeat(2,1fr)}
-  .danza-grid{grid-template-columns:repeat(2,1fr)}
+}
+/* 7 card non si dividono in 2 o 3 colonne senza lasciare un orfano:
+   o 4 per riga (4+3, ultima riga centrata) o colonna singola. */
+@media (max-width:820px){
+  .team-grid>*,.danza-grid>*{max-width:none;flex-basis:100%}
 }
 
 @media (max-width:860px){
