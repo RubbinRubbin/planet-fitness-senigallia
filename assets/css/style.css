@@ -327,6 +327,21 @@ h2 .o,.o{color:var(--orange)}
 .serv p{color:#bdb8af;font-size:.95rem}
 .serv strong{color:var(--ink);font-weight:600}
 
+/* ---------- TEAM / INSEGNANTI ---------- */
+.team{padding:clamp(4rem,9vw,7rem) 0 clamp(5rem,11vw,9rem);z-index:2;border-top:1px solid var(--line);background:var(--bg-2)}
+.team h2{margin-bottom:3rem}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem}
+.member{
+  padding:2.2rem 1.9rem;border:1px solid var(--line);border-radius:var(--rad);
+  background:var(--bg);transition:transform .4s,border-color .4s,background .4s;
+}
+.member:hover{transform:translateY(-5px);border-color:rgba(245,122,31,.4);background:rgba(245,122,31,.05)}
+.member h3{font-size:1.35rem;text-transform:uppercase;margin-bottom:.5rem}
+.member span{font-size:.86rem;color:var(--muted);letter-spacing:.02em}
+.team-note{margin-top:2rem;color:var(--muted);font-size:.95rem}
+.team-note a{color:var(--orange);font-weight:600}
+.team-note a:hover{text-decoration:underline}
+
 /* ---------- INFO ---------- */
 .info{padding:clamp(5rem,11vw,9rem) 0;z-index:2;border-top:1px solid var(--line);background:var(--bg-2)}
 .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,5rem);margin-bottom:3rem}
@@ -400,6 +415,7 @@ h2 .o,.o{color:var(--orange)}
   .stats{grid-template-columns:repeat(2,1fr)}
   .disc-grid{grid-template-columns:repeat(2,1fr)}
   .serv-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
   .danza-grid{grid-template-columns:repeat(2,1fr)}
 }
 
@@ -441,7 +457,7 @@ h2 .o,.o{color:var(--orange)}
 @media (max-width:620px){
   .wrap,.hero-inner,.mondi-grid,.disc-grid,.map-wrap{width:90vw}
   .stats{grid-template-columns:1fr 1fr}
-  .disc-grid,.serv-grid,.danza-grid{grid-template-columns:1fr}
+  .disc-grid,.serv-grid,.team-grid,.danza-grid{grid-template-columns:1fr}
   .lab-split{grid-template-columns:1fr;gap:1.6rem}
   .hero{padding-top:6.5rem;min-height:92svh}
   .hero h1{margin:.6rem 0 1rem}
