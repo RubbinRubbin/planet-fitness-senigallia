@@ -181,16 +181,6 @@ h2 .o,.o{color:var(--orange)}
 .hero-sub .hl{color:var(--orange);font-style:italic}
 .hero-lede{max-width:42ch;color:var(--muted);font-size:clamp(1rem,1.4vw,1.12rem);margin-bottom:2.4rem}
 .hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
-.scroll-cue{
-  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:.7rem;
-  font-size:.66rem;letter-spacing:.4em;color:var(--muted);
-}
-.scroll-cue span{
-  width:1px;height:46px;background:linear-gradient(var(--orange),transparent);
-  animation:cue 1.9s ease-in-out infinite;transform-origin:top;
-}
-@keyframes cue{0%,100%{transform:scaleY(.35);opacity:.4}50%{transform:scaleY(1);opacity:1}}
 
 /* ---------- MARQUEE ---------- */
 .marquee{
@@ -242,8 +232,6 @@ h2 .o,.o{color:var(--orange)}
   background:radial-gradient(circle,rgba(245,122,31,.16),transparent 70%);
   opacity:0;transition:opacity .5s;
 }
-.mondo:hover{transform:translateY(-6px);border-color:rgba(245,122,31,.4)}
-.mondo:hover::before{opacity:1}
 .mondo.feat{background:linear-gradient(160deg,rgba(245,122,31,.16),var(--bg-2));border-color:rgba(245,122,31,.32)}
 .mondo-idx{
   font-family:var(--impact);font-size:.95rem;color:var(--orange);
@@ -302,7 +290,6 @@ h2 .o,.o{color:var(--orange)}
 .danza-intro em{color:var(--orange);font-style:italic}
 .danza-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-bottom:1.3rem}
 .dz{border:1px solid var(--line);border-radius:var(--rad);padding:2rem 1.8rem;transition:border-color .4s,transform .4s,background .4s}
-.dz:hover{border-color:rgba(245,122,31,.45);transform:translateY(-5px);background:rgba(245,122,31,.05)}
 .dz h3{font-size:1.35rem;text-transform:uppercase;margin-bottom:.6rem}
 .dz p{color:var(--muted);font-size:.92rem}
 .danza-feature{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
@@ -322,7 +309,6 @@ h2 .o,.o{color:var(--orange)}
 .servizi h2{margin-bottom:3rem}
 .serv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem}
 .serv{padding:2.2rem 1.9rem;border:1px solid var(--line);border-radius:var(--rad);background:var(--bg-2);transition:transform .4s,border-color .4s}
-.serv:hover{transform:translateY(-5px);border-color:rgba(245,122,31,.4)}
 .serv h3{font-size:1.3rem;text-transform:uppercase;margin-bottom:.9rem;color:var(--orange)}
 .serv p{color:#bdb8af;font-size:.95rem}
 .serv strong{color:var(--ink);font-weight:600}
@@ -335,7 +321,6 @@ h2 .o,.o{color:var(--orange)}
   padding:2.2rem 1.9rem;border:1px solid var(--line);border-radius:var(--rad);
   background:var(--bg);transition:transform .4s,border-color .4s,background .4s;
 }
-.member:hover{transform:translateY(-5px);border-color:rgba(245,122,31,.4);background:rgba(245,122,31,.05)}
 .member h3{font-size:1.35rem;text-transform:uppercase;margin-bottom:.5rem}
 .member span{font-size:.86rem;color:var(--muted);letter-spacing:.02em}
 .team-note{margin-top:2rem;color:var(--muted);font-size:.95rem}
@@ -408,6 +393,18 @@ h2 .o,.o{color:var(--orange)}
 .reveal[data-d="4"]{transition-delay:.36s}
 .reveal[data-d="5"]{transition-delay:.45s}
 
+/* ---------- card hover: only real pointer devices ----------
+   (su touch un tap non deve "incollare" il bordo arancione:
+    su mobile resta tutto come il riposo desktop, solo la card
+    eXtreme Lab ha il bordo arancione perché è di default) */
+@media (hover:hover) and (pointer:fine){
+  .mondo:hover{transform:translateY(-6px);border-color:rgba(245,122,31,.4)}
+  .mondo:hover::before{opacity:1}
+  .dz:hover{border-color:rgba(245,122,31,.45);transform:translateY(-5px);background:rgba(245,122,31,.05)}
+  .serv:hover{transform:translateY(-5px);border-color:rgba(245,122,31,.4)}
+  .member:hover{transform:translateY(-5px);border-color:rgba(245,122,31,.4);background:rgba(245,122,31,.05)}
+}
+
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -443,7 +440,6 @@ h2 .o,.o{color:var(--orange)}
     background:var(--orange);color:#140a02!important;
     padding:1.05rem!important;font-size:1.05rem;
   }
-  .scroll-cue{display:none}
 
   .extreme-grid{grid-template-columns:1fr;gap:3rem}
   .extreme-emblem{max-width:340px;margin-inline:auto}
